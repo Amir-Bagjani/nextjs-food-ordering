@@ -39,7 +39,7 @@ const AddModal = ({ setShowAdd }) => {
         extraOptions,
         img: res.data.url,
       };
-      await Axios.post("http://localhost:3000/api/products", newProduct);
+      await Axios.post(process.env.B_URL+"api/products", newProduct);
       setPending(false);
       setShowAdd(false);
     } catch (err) {

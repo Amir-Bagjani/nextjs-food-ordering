@@ -13,7 +13,7 @@ const Login = () => {
     if (username !== `` && password !== ``) {
       setError(false);
       try {
-        await Axios.post(`http://localhost:3000/api/login`, {
+        await Axios.post(process.env.B_URL+`api/login`, {
           username,
           password,
         });

@@ -10,7 +10,7 @@ const Admin = ({ products, orders }) => {
 
     const handleDelete = async(id) =>{
         try{
-            await Axios.delete("http://localhost:3000/api/products/" + id)
+            await Axios.delete(process.env.B_URL+"api/products/" + id)
             setPizzaList(pizzaList.filter(i => i._id !== id))
         }catch(err){
             console.log(err.data);
@@ -18,7 +18,7 @@ const Admin = ({ products, orders }) => {
     }
     const handleChangeStage = async(order) =>{
         try{
-            await Axios.put(`http://localhost:3000/api/orders/${order._id}` , {status: order.status + 1})
+            await Axios.put(process.env.B_URL+`api/orders/${order._id}` , {status: order.status + 1})
             const newStatus = [...orderList].map(i => {
                 if(i._id === order._id) return {...i , status: order.status + 1}
                 return i
@@ -103,8 +103,8 @@ export const getServerSideProps = async(context) => {
             }
         }
     }
-    const productRes= await Axios.get(`http://localhost:3000/api/products`);
-    const orederRes= await Axios.get(`http://localhost:3000/api/orders`);
+    const productRes= await Axios.get(process.env.B_URL+`api/products`);
+    const orederRes= await Axios.get(process.env.B_URL+`api/orders`);
 
     return{
         props:{
