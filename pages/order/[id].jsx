@@ -98,7 +98,7 @@ const Order = ({ order }) => {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await Axios.get(process.env.B_URL+`api/orders/${params.id}`);
+  const res = await Axios.get(`https://nextjs-food-order.vercel.app/api/orders/${params.id}`);
   return {
     props: { order: res.data },
   };

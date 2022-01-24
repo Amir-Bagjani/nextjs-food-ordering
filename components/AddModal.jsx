@@ -39,7 +39,7 @@ const AddModal = ({ setShowAdd }) => {
         extraOptions,
         img: res.data.url,
       };
-      await Axios.post(process.env.B_URL+"api/products", newProduct);
+      await Axios.post("https://nextjs-food-order.vercel.app/api/products", newProduct);
       setPending(false);
       setShowAdd(false);
     } catch (err) {

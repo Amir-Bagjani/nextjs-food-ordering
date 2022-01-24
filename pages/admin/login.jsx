@@ -13,7 +13,7 @@ const Login = () => {
     if (username !== `` && password !== ``) {
       setError(false);
       try {
-        await Axios.post(process.env.B_URL+`api/login`, {
+        await Axios.post(`https://nextjs-food-order.vercel.app/api/login`, {
           username,
           password,
         });

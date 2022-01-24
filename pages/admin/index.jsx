@@ -10,7 +10,7 @@ const Admin = ({ products, orders }) => {
 
     const handleDelete = async(id) =>{
         try{
-            await Axios.delete(process.env.B_URL+"api/products/" + id)
+            await Axios.delete("https://nextjs-food-order.vercel.app/api/products/" + id)
             setPizzaList(pizzaList.filter(i => i._id !== id))
         }catch(err){
             console.log(err.data);
@@ -18,7 +18,7 @@ const Admin = ({ products, orders }) => {
     }
     const handleChangeStage = async(order) =>{
         try{
-            await Axios.put(process.env.B_URL+`api/orders/${order._id}` , {status: order.status + 1})
+            await Axios.put(`https://nextjs-food-order.vercel.app/api/orders/${order._id}` , {status: order.status + 1})
             const newStatus = [...orderList].map(i => {
                 if(i._id === order._id) return {...i , status: order.status + 1}
                 return i
@@ -95,7 +95,7 @@ const Admin = ({ products, orders }) => {
 export const getServerSideProps = async(context) => {
     const myCookie = context.req?.cookies || "";
 
-    if(myCookie.token !== process.env.TOKEN){
+    if(myCookie.token !== process.TOKEN){
         return{
             redirect:{
                 destination: "/admin/login",
@@ -103,8 +103,8 @@ export const getServerSideProps = async(context) => {
             }
         }
     }
-    const productRes= await Axios.get(process.env.B_URL+`api/products`);
-    const orederRes= await Axios.get(process.env.B_URL+`api/orders`);
+    const productRes= await Axios.get(`https://nextjs-food-order.vercel.app/api/products`);
+    const orederRes= await Axios.get(`https://nextjs-food-order.vercel.app/api/orders`);
 
     return{
         props:{
