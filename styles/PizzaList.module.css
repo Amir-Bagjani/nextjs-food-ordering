@@ -1,0 +1,32 @@
+.container{
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.title{
+    padding: 15px 0;
+    font-size: 38px;
+}
+.desc{
+    font-size: 24px;
+    color: #444;
+    width: 70%;
+    margin: 15px 0;
+}
+.wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+@media screen and (max-width: 520px) {
+    .title{
+        text-align: center;
+    }
+    .desc{
+        width: 95%;
+        text-align: center;
+    }
+}
